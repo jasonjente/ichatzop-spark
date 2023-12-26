@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.aueb</groupId>
-    <artifactId>ichatzop</artifactId>
+    <artifactId>p3312322</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Spark App - ichatzop</name>
     <description>This application is developed using Apache spark as an assignment for Big Data System design.</description>
@@ -36,19 +36,10 @@
             <artifactId>logback-classic</artifactId>
             <version>1.4.14</version>
         </dependency>
-
-        <!-- Testing -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.10.0</version>
-            <scope>test</scope>
-        </dependency>
-
-
     </dependencies>
 
     <build>
-
+        <!-- This directive will name the jar as 'p3312322.jar'. -->
+        <finalName>p3312322</finalName>
     </build>
 </project>

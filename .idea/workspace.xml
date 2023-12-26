@@ -4,28 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc9aec63-2798-4f80-b75a-774474199916" name="Changes" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/aueb/SparkApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/aueb/constants/ApplicationConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/aueb/constants/DatasetConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/aueb/spark/SparkUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/aueb/tasks/Task1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/aueb/utils/reader/CsvUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/dataset/areas.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/dataset/case_status.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/dataset/crimes.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/dataset/criminal_cases.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/dataset/premises.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/dataset/victim_descent.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/dataset/weapons.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
+    <list default="true" id="fc9aec63-2798-4f80-b75a-774474199916" name="Changes" comment="finalization of tasks &#10;&#10;creation of python scripts to plot the csvs generated from Spark.">
+      <change afterPath="$PROJECT_DIR$/scripts/create-bar-chart.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/create-histogram.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/create-line-chart.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/create-pie-chart.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/line-chart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-and-submit.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build-and-submit.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create-bar-chart.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/create-histogram.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/create-line-chart.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/create-pie-chart.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/line-chart.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,13 +26,21 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -64,18 +63,23 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "develop",
     "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "11",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/projects/Mathimata/metaptyxiako/Big Data Systems/assignments/assignment_2/Project2/ichatzop-spark/src/main/resources",
-    "project.structure.last.edited": "SDKs",
+    "last_opened_file_path": "C:/projects/Mathimata/metaptyxiako/Big Data Systems/assignments/assignment_2/Project2/ichatzop-spark",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.aueb.tasks" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\projects\Mathimata\metaptyxiako\Big Data Systems\assignments\assignment_2\Project2\ichatzop-spark" />
       <recent name="C:\projects\Mathimata\metaptyxiako\Big Data Systems\assignments\assignment_2\Project2\ichatzop-spark\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -140,6 +144,56 @@
       <option name="presentableId" value="Default" />
       <updated>1703525386452</updated>
     </task>
+    <task id="LOCAL-00001" summary="Initial Commit&#10;Completion of infrastructure for spark and completion of task 1.">
+      <option name="closed" value="true" />
+      <created>1703596278102</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703596278102</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Completion of Task 4 and 5&#10;&#10;Minor correction in csv file">
+      <option name="closed" value="true" />
+      <created>1703601879109</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703601879109</updated>
+    </task>
+    <task id="LOCAL-00003" summary="finalization of tasks refactoring">
+      <option name="closed" value="true" />
+      <created>1703669496948</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1703669496948</updated>
+    </task>
+    <task id="LOCAL-00004" summary="finalization of tasks refactoring">
+      <option name="closed" value="true" />
+      <created>1703693055112</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1703693055112</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial Commit&#10;Completion of infrastructure for spark and completion of task 1." />
+    <MESSAGE value="Completion of Task 4 and 5&#10;&#10;Minor correction in csv file" />
+    <MESSAGE value="finalization of tasks refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="finalization of tasks refactoring" />
   </component>
 </project>

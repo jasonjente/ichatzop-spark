@@ -10,7 +10,7 @@ public class DatasetConstants {
     public static final String PREMISES_CSV_PATH =  BASE_PATH +"premises.csv";
     public static final String VICTIM_DESCENT_CSV_PATH =  BASE_PATH +"victim_descent.csv";
     public static final String WEAPONS_CSV_PATH =  BASE_PATH +"weapons.csv";
-    public static final String DELIMITER = "|";
+    public static final String PIPE_DELIMITER = "|";
 
 
 }
