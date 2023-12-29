@@ -3,8 +3,6 @@ package org.aueb.utils.reader;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
-import org.aueb.constants.ApplicationConstants;
-import org.aueb.constants.DatasetConstants;
 
 import static org.aueb.constants.DatasetConstants.PIPE_DELIMITER;
 
@@ -12,6 +10,8 @@ import static org.aueb.constants.DatasetConstants.PIPE_DELIMITER;
  * This utility class provides static methods in order to access csv documents in a spark context.
  */
 public class CsvUtils {
+    private CsvUtils() {
+    }
 
     /**
      * Reads a CSV file into a Dataset<Row> (dataset) using Apache Spark.

@@ -1,8 +1,10 @@
-# pie_chart.py
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
+import sys
+import logging
 
+logging.basicConfig(level=logging.INFO)
 def find_csv_filename(path):
     for file in os.listdir(path):
         if file.endswith('.csv'):
@@ -12,25 +14,25 @@ def find_csv_filename(path):
 def generate_pie_chart(directory, chart_title):
     csv_file = find_csv_filename(directory)
     if csv_file is None:
-        print("No CSV file found in the directory.")
+        logging.error("No CSV file found in the directory.")
         return
+    logging.info(f"Found CSV file: {csv_file}")
 
-    # Load data
     file_path = os.path.join(directory, csv_file)
     data = pd.read_csv(file_path, delimiter='|')
+    logging.info("CSV file successfully read")
     labels = data.iloc[:, 0]
     sizes = data.iloc[:, 1]
 
-    # Create Pie Chart
     plt.figure(figsize=(15, 15))
     plt.pie(sizes, labels=labels, autopct='%1.1f%%')
     plt.title(chart_title)
-    plt.savefig(os.path.join(directory, 'pie_chart.png'))
+    plot_file_name = os.path.join(directory, 'pie_chart.png')
+    plt.savefig(plot_file_name)
     plt.close()
-    print("Pie chart created: " + file_path + "/pie_chart.png")
+    logging.info(f"Pie chart successfully saved at {plot_file_name}")
 
 if __name__ == "__main__":
-    import sys
     if len(sys.argv) != 3:
         print("Usage: python pie_chart.py <directory_path> <chart_title>")
     else:

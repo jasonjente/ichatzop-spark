@@ -1,4 +1,3 @@
-# create_barchart.py
 import sys
 import os
 import pandas as pd
@@ -42,7 +41,6 @@ def plot_bar_chart(directory_path):
         plt.savefig(plot_file_name)
         logging.info(f"Bar chart successfully saved at {plot_file_name}")
 
-        plt.show()
     except Exception as e:
         logging.error(f"Failed to create or save the bar chart: {e}")
 

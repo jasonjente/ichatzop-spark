@@ -1,3 +1,6 @@
+/**
+ * Author: p3312322 - Iason Chatzopoulos - Dec 2023.
+ */
 package org.aueb.tasks;
 
 import org.apache.spark.sql.*;
@@ -51,17 +54,17 @@ public class Task4 {
 
         LOGGER.info("Joining the data of criminal cases with crimes");
         var joinedData = criminalCasesCsvData
-                .join(crimesCsvData, criminalCasesCsvData.col("crime_id")
-                        .equalTo(crimesCsvData.col("crime_id")))
-                .join(caseStatusCsvData, criminalCasesCsvData.col("case_status_id")
-                        .equalTo(caseStatusCsvData.col("status_id")));
+                .join(crimesCsvData, criminalCasesCsvData.col(CRIME_ID)
+                        .equalTo(crimesCsvData.col(CRIME_ID)))
+                .join(caseStatusCsvData, criminalCasesCsvData.col(CASE_STATUS_ID)
+                        .equalTo(caseStatusCsvData.col(STATUS_ID)));
 
         LOGGER.info("Generating report.");
         var incidentStatusReport = joinedData
-                .groupBy(crimesCsvData.col("crime_desc"), joinedData.col("status_desc"))
+                .groupBy(crimesCsvData.col(CRIMES_DESC), joinedData.col(STATUS_DESC))
                 .count()
-                .withColumnRenamed("count", "Number_of_Incidents")
-                .orderBy("crime_desc", "status_desc");
+                .withColumnRenamed(COUNT, NUMBER_OF_INCIDENTS)
+                .orderBy(CRIMES_DESC, STATUS_DESC);
 
         incidentStatusReport.show();
 
@@ -71,6 +74,7 @@ public class Task4 {
                 .option("delimiter", PIPE_DELIMITER)
                 .csv(ApplicationConstants.OUTPUT_DIR + "task-4");
 
+        LOGGER.info("Stopping Spark Session.");
         spark.stop();
     }
 

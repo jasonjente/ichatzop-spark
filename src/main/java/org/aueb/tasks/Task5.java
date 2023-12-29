@@ -1,3 +1,6 @@
+/**
+ * Author: p3312322 - Iason Chatzopoulos - Dec 2023.
+ */
 package org.aueb.tasks;
 
 import org.apache.spark.sql.SaveMode;
@@ -37,23 +40,23 @@ public class Task5 {
 
         LOGGER.info("Joining the data of criminal cases with victim descent.");
         var joinedData = criminalCasesCsvData
-                .join(victimDescentCsvData, criminalCasesCsvData.col("victim_descent_id")
-                        .equalTo(victimDescentCsvData.col("descent_id")));
+                .join(victimDescentCsvData, criminalCasesCsvData.col(VICTIM_DESCENT_ID)
+                        .equalTo(victimDescentCsvData.col(DESCENT_ID)));
 
         LOGGER.info("Generating data cube.");
         var dataCube = joinedData
-                .cube("descent", "victim_sex", "victim_age")
+                .cube(DESCENT, VICTIM_SEX, VICTIM_AGE)
                 .count()
-                .withColumnRenamed("count", "Number_of_Incidents");
+                .withColumnRenamed(COUNT, NUMBER_OF_INCIDENTS);
 
         LOGGER.info("Converting null values from data cube to 'ALL'.");
         var adjustedDataCube = dataCube
-                .withColumn("descent", when(col("descent").isNull(), "ALL")
-                        .otherwise(col("descent")))
-                .withColumn("victim_sex", when(col("victim_sex").isNull(), "ALL")
-                        .otherwise(col("victim_sex")))
-                .withColumn("victim_age", when(col("victim_age").isNull(), "ALL")
-                        .otherwise(col("victim_age")));
+                .withColumn(DESCENT, when(col(DESCENT).isNull(), ALL)
+                        .otherwise(col(DESCENT)))
+                .withColumn(VICTIM_SEX, when(col(VICTIM_SEX).isNull(), ALL)
+                        .otherwise(col(VICTIM_SEX)))
+                .withColumn(VICTIM_AGE, when(col(VICTIM_AGE).isNull(), ALL)
+                        .otherwise(col(VICTIM_AGE)));
 
         adjustedDataCube.show();
 
@@ -62,6 +65,7 @@ public class Task5 {
                 .option("delimiter", PIPE_DELIMITER)
                 .csv(ApplicationConstants.OUTPUT_DIR + "task-5");
 
+        LOGGER.info("Stopping Spark Session.");
         spark.stop();
     }
 

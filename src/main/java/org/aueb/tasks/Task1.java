@@ -1,3 +1,6 @@
+/**
+ * Author: p3312322 - Iason Chatzopoulos - Dec 2023.
+ */
 package org.aueb.tasks;
 
 import org.apache.spark.sql.SaveMode;
@@ -53,8 +56,8 @@ public class Task1 {
         LOGGER.info("Generating report.");
         var report = joinedData.groupBy("area", "premis_desc")
                 .count()
-                .withColumnRenamed("count", "Number_of_Incidents")
-                .orderBy(col("area").asc(), col("Number_of_Incidents")
+                .withColumnRenamed(COUNT, NUMBER_OF_INCIDENTS)
+                .orderBy(col("area").asc(), col(NUMBER_OF_INCIDENTS)
                         .desc());
 
         report.show();
@@ -64,7 +67,8 @@ public class Task1 {
                 .option("header", "true")
                 .option("delimiter", PIPE_DELIMITER)
                 .csv(OUTPUT_DIR + "task-1");
-        
+
+        LOGGER.info("Stopping Spark Session.");
         spark.stop();
     }
 

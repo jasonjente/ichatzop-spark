@@ -1,3 +1,6 @@
+/**
+ * Author: p3312322 - Iason Chatzopoulos - Dec 2023.
+ */
 package org.aueb.tasks;
 
 import org.apache.spark.sql.*;
@@ -6,8 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import static org.apache.spark.sql.functions.*;
 import static org.aueb.constants.ApplicationConstants.OUTPUT_DIR;
-import static org.aueb.constants.DatasetConstants.CRIMINAL_CASES_CSV_PATH;
-import static org.aueb.constants.DatasetConstants.PIPE_DELIMITER;
+import static org.aueb.constants.DatasetConstants.*;
 import static org.aueb.spark.SparkUtils.createSparkSession;
 import static org.aueb.utils.reader.CsvUtils.getDatasetFromCsv;
 
@@ -23,6 +25,9 @@ import static org.aueb.utils.reader.CsvUtils.getDatasetFromCsv;
  */
 public class Task3 {
     private static final Logger LOGGER = LoggerFactory.getLogger(Task3.class);
+    private static final String YEAR = "year";
+    private static final String MONTH = "month";
+    private static final String DATE_OCCURRED = "date_occurred";
 
     /**
      * Task Entry point. It will find the paths of the csv files for the criminal cases and add them to a
@@ -35,20 +40,20 @@ public class Task3 {
 
     public static void runTask3() {
         LOGGER.info("runTask3() - Enter - Starting task #3.");
-        SparkSession spark = createSparkSession();
+        var spark = createSparkSession();
 
         LOGGER.info("Parsing Criminal Cases CSV, path: {}", CRIMINAL_CASES_CSV_PATH);
-        Dataset<Row> criminalCasesCsvData =
+        var criminalCasesCsvData =
                 getDatasetFromCsv(spark, CRIMINAL_CASES_CSV_PATH);
 
         LOGGER.info("Generating report.");
-        Dataset<Row> monthlyReport = criminalCasesCsvData
-                .withColumn("year", year(col("date_occurred")))
-                .withColumn("month", month(col("date_occurred")))
-                .groupBy("year", "month")
+        var monthlyReport = criminalCasesCsvData
+                .withColumn(YEAR, year(col(DATE_OCCURRED)))
+                .withColumn(MONTH, month(col(DATE_OCCURRED)))
+                .groupBy(YEAR, MONTH)
                 .count()
-                .withColumnRenamed("count", "Number_of_Incidents")
-                .orderBy("year", "month");
+                .withColumnRenamed(COUNT, NUMBER_OF_INCIDENTS)
+                .orderBy(YEAR, MONTH);
 
         monthlyReport.show();
 
@@ -58,6 +63,7 @@ public class Task3 {
                 .option("delimiter", PIPE_DELIMITER)
                 .csv(OUTPUT_DIR + "task-3");
 
+        LOGGER.info("Stopping Spark Session.");
         spark.stop();
     }
 

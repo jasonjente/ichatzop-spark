@@ -50,7 +50,9 @@ Write a spark application that will:
     $ export SPARK_HOME=/opt/spark
     $ export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin:.
     $ export PYSPARK_PYTHON=/usr/bin/python3
-    $ $SPARK_HOME/bin/spark-submit --class "org.aueb.tasks.Task1" --master local[1] "/p3312322.jar" >> task_1.log
+    $ export JAR_DIR="target/p3312322.jar"
+
+    $ $SPARK_HOME/bin/spark-submit --class "org.aueb.tasks.Task1" --master local[1] $JAR_DIR >> task_1.log
 ```
 
 ### Java stuff
@@ -73,8 +75,8 @@ Write a spark application that will:
      * @param filePath The path to the CSV file.
      * @return A Dataset<Row> representing the CSV data.
      */
-    public static Dataset<Row> getDatasetFromCsv(SparkSession spark, String filePath) {
-        return spark.read()
+      public static Dataset<Row> getDatasetFromCsv(SparkSession spark, String filePath) {
+          return spark.read()
                 .option("header", "true")
                 .option("delimiter", DatasetConstants.PIPE_DELIMITER)
                 .csv(filePath);
@@ -84,3 +86,8 @@ Write a spark application that will:
   - To improve code readability and maintainability, I created a format of Tasks that can be easily generated and submitted 
    to spark even in a streamlined and automated fashion. Each task is responsible for creating and destroying the spark context,
   and load any CSV needed to spark and then perform join operations and group by's on the data.
+  
+### Performance
+
+Spark can work in parallel allowing for the processing of the files to become extremely fast. 5 sequential submissions 
+took ~34 seconds to  complete and as 5 separate processes, it managed to complete in 14 seconds. Also, the 
