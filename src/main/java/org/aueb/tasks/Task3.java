@@ -1,6 +1,3 @@
-/**
- * Author: p3312322 - Iason Chatzopoulos - Dec 2023.
- */
 package org.aueb.tasks;
 
 import org.apache.spark.sql.*;

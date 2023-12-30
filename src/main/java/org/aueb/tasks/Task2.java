@@ -1,6 +1,3 @@
-/**
- * Author: p3312322 - Iason Chatzopoulos - Dec 2023.
- */
 package org.aueb.tasks;
 
 import org.apache.spark.sql.*;
@@ -18,7 +15,7 @@ import static org.aueb.utils.reader.CsvUtils.getDatasetFromCsv;
  * Step 1: Creates a Spark session.
  * Step 2: Loads the CSVs for the criminal cases.
  * Step 3: Performs a join on the crimes table and a group by crime id to perform a count as an aggregate
- *         function and then display the results in descending order and saves them under /output/task-2/.
+ *         function and then displays the results in descending order and saves them under /output/task-1/.
  * USAGE:
  *       $SPARK_HOME/bin/spark-submit --class "org.aueb.tasks.Task2" --master local[1] target/p3312322.jar
  */

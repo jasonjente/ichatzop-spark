@@ -1,6 +1,3 @@
-/**
- * Author: p3312322 - Iason Chatzopoulos - Dec 2023.
- */
 package org.aueb.spark;
 
 import org.apache.spark.sql.SparkSession;

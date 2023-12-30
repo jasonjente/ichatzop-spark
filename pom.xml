@@ -7,7 +7,8 @@
     <artifactId>p3312322</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Spark App - ichatzop - p3312322</name>
-    <description>This application is developed using Apache spark as an assignment for Big Data System design.</description>
+    <description>This application is developed using Apache spark as an assignment for a course on
+        Big Data System design.</description>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>

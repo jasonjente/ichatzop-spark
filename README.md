@@ -55,8 +55,39 @@ Write a spark application that will:
     $ $SPARK_HOME/bin/spark-submit --class "org.aueb.tasks.Task1" --master local[1] $JAR_DIR >> task_1.log
 ```
 
+build-and-submit.sh:
+
+This script accepts the following 3 or 4 arguments based on the type of execution:
+- --standalone _<project.base.dir>_, where _<project.base.dir>_ is the same path as the 'pom.xml' file
+- --clustered _<spark_host_url> <project.base.dir>_, where _<spark_host_url>_ corresponds to the URL of the Spark master
+and _<project.base.dir>_ is the same path as the 'pom.xml' file.
+
+Next, the script will clean the '_/opt/spark/conf/application.properties_' file which contains the variables:
+- ```output.location```, 
+- ```master.location ```and
+- ```project.base.location```.
+
+so that the script and Spark applications are aligned and looking at the same paths, and it will rebuild it with the 
+values of the execution. Then, the command 'mvn clean install' is executed to produce the 'p33122322' jar, and the 
+Java classes are submitted to Spark using the spark-submit command. Each submission is made in a separate thread for 
+better time performance. 
+
+Once the execution is completed and the CSV files with the results have been generated.
+
+For the execution, the following binaries should be installed on the machine:
+- ```sudo apt install default-jdk scala maven git python3 python3-pip -y```
+- ```pip3 install pandas matplotlib```
+
+Execution examples:
+
+```bash
+    # Clustered:
+    $ ./build-and-submit-parallel.sh --clustered "spark://JasonJenteDesktop:7077 --deploy-mode cluster" "/home/user/project/"
+    
+    # Standalone:
+    $ ./build-and-submit.sh --standalone "/home/user/project/"
+```
 ### Java stuff
-- To reduce DRY I did the following:
   - Generated the following method in a utility class creating a spark session which can be then used to submit the dataset csv files.
     ```java
     public static SparkSession createSparkSession(){
@@ -90,4 +121,4 @@ Write a spark application that will:
 ### Performance
 
 Spark can work in parallel allowing for the processing of the files to become extremely fast. 5 sequential submissions 
-took ~34 seconds to  complete and as 5 separate processes, it managed to complete in 14 seconds. Also, the 
+took ~34 seconds to  complete and as 5 separate processes, it managed to complete in 14 seconds.

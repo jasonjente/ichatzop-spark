@@ -1,12 +1,12 @@
-/**
- * Author: p3312322 - Iason Chatzopoulos - Dec 2023.
- */
 package org.aueb.constants;
+
+import org.aueb.utils.reader.PropertyFileReader;
+
 public class DatasetConstants {
+    public static final String PROJECT_BASE_DIR = PropertyFileReader.getProperty("project.base.dir", "/home/");
     private DatasetConstants() {
     }
 
-    public static final String PROJECT_BASE_DIR = "/mnt/c/projects/Mathimata/metaptyxiako/BigDataSystems/assignments/assignment_2/Project2/ichatzop-spark/";
     public static final String DATA_SET_BASE_PATH = PROJECT_BASE_DIR + "src/main/resources/dataset/";
     public static final String AREAS_CSV_PATH = DATA_SET_BASE_PATH + "areas.csv";
     public static final String CASE_STATUS_CSV_PATH =  DATA_SET_BASE_PATH +"case_status.csv";

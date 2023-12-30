@@ -1,6 +1,3 @@
-/**
- * Author: p3312322 - Iason Chatzopoulos - Dec 2023.
- */
 package org.aueb.tasks;
 
 import org.apache.spark.sql.SaveMode;
@@ -15,6 +12,16 @@ import static org.aueb.constants.DatasetConstants.*;
 import static org.aueb.spark.SparkUtils.createSparkSession;
 import static org.aueb.utils.reader.CsvUtils.getDatasetFromCsv;
 
+/**
+ * This class represents the fourth task for the assignment.
+ * Step 1: Creates a Spark session.
+ * Step 2: Loads the CSVs for the criminal cases and any necessary datasets for crime types and incident status.
+ * Step 3: Joins the criminal cases data with the victim descent's. It then performs a data cube
+ *         victim descent, sex and age. It performs a count as an aggregate function and displays the results and saves
+ *         them under /output/task-5/.
+ * USAGE:
+ *       $SPARK_HOME/bin/spark-submit --class "org.aueb.tasks.Task5" --master local[1] target/p3312322.jar
+ */
 public class Task5 {
     private static final Logger LOGGER = LoggerFactory.getLogger(Task5.class);
 

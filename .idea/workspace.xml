@@ -4,25 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc9aec63-2798-4f80-b75a-774474199916" name="Changes" comment="finalization of tasks &#10;&#10;creation of python scripts to plot the csvs generated from Spark.">
-      <change afterPath="$PROJECT_DIR$/build-and-submit-parallel.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="fc9aec63-2798-4f80-b75a-774474199916" name="Changes" comment="chore: alignment of script and spark application paths which are configured via the command invoked.">
+      <change afterPath="$PROJECT_DIR$/build-and-submit-simple.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/aueb/utils/reader/PropertyFileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-and-submit-parallel.sh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build-and-submit.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build-and-submit.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/create-bar-chart.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/create-bar-chart.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/create-histogram.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/create-histogram.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/create-line-chart.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/create-line-chart.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/create-pie-chart.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/create-pie-chart.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/line-chart.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aueb/constants/ApplicationConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aueb/constants/ApplicationConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aueb/constants/DatasetConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aueb/constants/DatasetConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aueb/spark/SparkUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aueb/spark/SparkUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aueb/tasks/Task1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aueb/tasks/Task1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aueb/tasks/Task2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aueb/tasks/Task2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aueb/tasks/Task3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aueb/tasks/Task3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aueb/tasks/Task4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aueb/tasks/Task4.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aueb/tasks/Task5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aueb/tasks/Task5.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aueb/utils/reader/CsvUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aueb/utils/reader/CsvUtils.java" afterDir="false" />
     </list>
@@ -35,8 +32,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Python Script" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -77,6 +74,7 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "Application.MyMain.executor": "Run",
+    "Application.PropertyFileReader.executor": "Run",
     "Application.SparkApplication.executor": "Run",
     "Application.Task4.executor": "Run",
     "Application.org.aueb.MyMain.executor": "Run",
@@ -87,7 +85,7 @@
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "Rebasing master",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "11",
     "kotlin-language-version-configured": "true",
@@ -116,12 +114,25 @@
       <recent name="org.aueb.utils.reader" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Task4">
+  <component name="RunManager" selected="Application.PropertyFileReader">
     <configuration name="MyMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="org.aueb.utils.reader.MyMain" />
       <module name="ichatzop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.aueb.utils.reader.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PropertyFileReader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.aueb.utils.reader.PropertyFileReader" />
+      <module name="p3312322" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.aueb.utils.reader.*" />
@@ -160,6 +171,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PropertyFileReader" />
         <item itemvalue="Application.Task4" />
         <item itemvalue="Application.SparkApplication" />
         <item itemvalue="Application.MyMain" />
@@ -241,6 +253,8 @@
     <MESSAGE value="Completion of Task 4 and 5&#10;&#10;Minor correction in csv file" />
     <MESSAGE value="finalization of tasks refactoring" />
     <MESSAGE value="finalization of tasks &#10;&#10;creation of python scripts to plot the csvs generated from Spark." />
-    <option name="LAST_COMMIT_MESSAGE" value="finalization of tasks &#10;&#10;creation of python scripts to plot the csvs generated from Spark." />
+    <MESSAGE value="chore: alignment of script and spark application paths." />
+    <MESSAGE value="chore: alignment of script and spark application paths which are configured via the command invoked." />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: alignment of script and spark application paths which are configured via the command invoked." />
   </component>
 </project>
